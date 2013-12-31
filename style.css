@@ -94,6 +94,20 @@ header {
   border: 1px solid #84a6cc;
   position: absolute;
   color: #84a6cc; }
+  @media only screen and (max-width: 650px) {
+    .yearstamp {
+      -webkit-border-radius: 6px;
+      -moz-border-radius: 6px;
+      -ms-border-radius: 6px;
+      -o-border-radius: 6px;
+      border-radius: 6px; } }
+  @media only screen and (max-width: 400px) {
+    .yearstamp {
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      -ms-border-radius: 4px;
+      -o-border-radius: 4px;
+      border-radius: 4px; } }
   .yearstamp .inner {
     position: relative; }
   .yearstamp span {
@@ -107,8 +121,8 @@ header {
         padding: 8px 16px; } }
     @media only screen and (max-width: 400px) {
       .yearstamp span {
-        font-size: 14px;
-        padding: 6px 14px; } }
+        font-size: 16px;
+        padding: 4px 6px; } }
   .yearstamp .happy, .yearstamp .year {
     position: absolute;
     z-index: 2;
@@ -156,3 +170,6 @@ header {
     @media only screen and (max-width: 650px) {
       .yearstamp.active {
         margin-left: -30px; } }
+    @media only screen and (max-width: 400px) {
+      .yearstamp.active {
+        margin-left: -20px; } }
