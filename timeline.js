@@ -1,5 +1,12 @@
 $(function() {
   mobile = $('.mobile').css("display") != "block"
+  
+
+
+
+  alert("upd");
+
+
 
   $("#timeline").mousewheel(function(event, delta) {
     this.scrollLeft -= (delta * 30);
