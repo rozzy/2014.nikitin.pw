@@ -1,223 +1,336 @@
 html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+h1, h2, h3, h4, h5, h6, p, blockquote,
+pre,
 a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
+del, dfn, em, img, ins, kbd,
+q, s, samp,
 small, strike, strong, sub, sup, tt, var,
 b, u, i, center,
-dl, dt, dd, ol, ul, li,
+dl, dt,
+dd, ol, ul, li,
 fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
+table, caption, tbody, tfoot,
+thead, tr, th, td,
 article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
+figure, figcaption,
+footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  vertical-align: baseline; }
+time,
+mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
+}
 
 html {
-  line-height: 1; }
+    line-height: 1;
+}
 
 ol, ul {
-  list-style: none; }
+    list-style: none;
+}
 
 table {
-  border-collapse: collapse;
-  border-spacing: 0; }
+    border-collapse: collapse;
+    border-spacing: 0;
+}
 
 caption, th, td {
-  text-align: left;
-  font-weight: normal;
-  vertical-align: middle; }
+    text-align: left;
+    font-weight: normal;
+    vertical-align: middle;
+}
 
 q, blockquote {
-  quotes: none; }
-  q:before, q:after, blockquote:before, blockquote:after {
+    quotes: none;
+}
+
+q:before, q:after, blockquote:before, blockquote:after {
     content: "";
-    content: none; }
+    content: none;
+}
 
 a img {
-  border: none; }
+    border: none;
+}
 
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
-  display: block; }
+article, aside, details, figcaption, figure, footer, header, hgroup,
+menu, nav, section, summary {
+    display: block;
+}
 
 html, body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 100; }
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 100;
+}
 
 .wrapper-background {
-  position: absolute;
-  min-width: 300px;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #06305f), color-stop(28%, #274d77), color-stop(89%, #aaccf0), color-stop(100%, #b8daff));
-  background: -webkit-linear-gradient(top, #06305f 0%, #274d77 28%, #aaccf0 89%, #b8daff 100%);
-  background: -moz-linear-gradient(top, #06305f 0%, #274d77 28%, #aaccf0 89%, #b8daff 100%);
-  background: -o-linear-gradient(top, #06305f 0%, #274d77 28%, #aaccf0 89%, #b8daff 100%);
-  background: linear-gradient(top, #06305f 0%, #274d77 28%, #aaccf0 89%, #b8daff 100%); }
+    position: absolute;
+    min-width: 300px;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjUwJSIgeTE9IjAlIiB4Mj0iNTAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzA2MzA1ZiIvPjxzdG9wIG9mZnNldD0iMjglIiBzdG9wLWNvbG9yPSIjMjc0ZDc3Ii8+PHN0b3Agb2Zmc2V0PSI4OSUiIHN0b3AtY29sb3I9IiNhYWNjZjAiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNiOGRhZmYiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWQpIiAvPjwvc3ZnPiA=');
+    background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #06305f), color-stop(28%, #274d77), color-stop(89%, #aaccf0), color-stop(100%, #b8daff));
+    background: -webkit-linear-gradient(top, #06305f 0%, #274d77 28%, #aaccf0 89%, #b8daff 100%);
+    background: -moz-linear-gradient(top, #06305f 0%, #274d77 28%, #aaccf0 89%, #b8daff 100%);
+    background: -o-linear-gradient(top, #06305f 0%, #274d77 28%, #aaccf0 89%, #b8daff 100%);
+    background: linear-gradient(top, #06305f 0%, #274d77 28%, #aaccf0 89%, #b8daff 100%);
+}
 
 .mobile_hidden {
-  opacity: 0;
-  display: none; }
-  @media only screen and (max-width: 760px) {
+    opacity: 0;
+    display: none;
+}
+
+@media only screen and (max-width: 760px) {
     .mobile_hidden .mobile {
-      display: none; } }
+        display: none;
+    }
+}
 
 center {
-  text-align: center;
-  z-index: 2;
-  margin: 0 auto; }
+    text-align: center;
+    z-index: 2;
+    margin: 0 auto;
+}
 
 header {
-  position: relative;
-  margin-top: 5%;
-  z-index: 5; }
+    position: relative;
+    margin-top: 5%;
+    z-index: 5;
+}
 
 .wishes {
-  position: absolute;
-  top: 100px;
-  font-size: 21px;
-  line-height: 34px;
-  text-align: center;
-  color: #c4dcf6;
-  font-weight: 100;
-  width: 100%; }
-  @media only screen and (max-width: 650px) {
+    position: absolute;
+    top: 100px;
+    font-size: 21px;
+    line-height: 34px;
+    text-align: center;
+    color: #c4dcf6;
+    font-weight: 100;
+    width: 100%;
+}
+
+@media only screen and (max-width: 650px) {
     .wishes {
-      font-size: 18px;
-      line-height: 28px;
-      top: 70px; } }
-  @media only screen and (max-width: 400px) {
+        font-size: 18px;
+        line-height: 28px;
+        top: 70px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
     .wishes {
-      top: 40px;
-      font-size: 14px;
-      line-height: 21px; } }
-  .wishes span {
+        top: 40px;
+        font-size: 14px;
+        line-height: 21px;
+    }
+}
+
+.wishes span {
     display: block;
     width: 300px;
-    margin: 0 auto; }
-    @media only screen and (max-width: 400px) {
-      .wishes span {
-        width: 150px; } }
+    margin: 0 auto;
+}
+
+@media only screen and (max-width: 400px) {
+    .wishes span {
+        width: 150px;
+    }
+}
 
 .yearstamp {
-  display: inline-block;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  -ms-border-radius: 8px;
-  -o-border-radius: 8px;
-  border-radius: 8px;
-  background: transparent;
-  border: 1px solid #84a6cc;
-  position: absolute;
-  color: #84a6cc; }
-  @media only screen and (max-width: 650px) {
+    display: inline-block;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    border-radius: 8px;
+    background: transparent;
+    border: 1px solid #84a6cc;
+    position: absolute;
+    color: #84a6cc;
+}
+
+@media only screen and (max-width: 650px) {
     .yearstamp {
-      -webkit-border-radius: 6px;
-      -moz-border-radius: 6px;
-      -ms-border-radius: 6px;
-      -o-border-radius: 6px;
-      border-radius: 6px; } }
-  @media only screen and (max-width: 400px) {
+        -webkit-border-radius: 6px;
+        -moz-border-radius: 6px;
+        -ms-border-radius: 6px;
+        -o-border-radius: 6px;
+        border-radius: 6px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
     .yearstamp {
-      -webkit-border-radius: 4px;
-      -moz-border-radius: 4px;
-      -ms-border-radius: 4px;
-      -o-border-radius: 4px;
-      border-radius: 4px; } }
-  .yearstamp .inner {
-    position: relative; }
-  .yearstamp span {
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        -ms-border-radius: 4px;
+        -o-border-radius: 4px;
+        border-radius: 4px;
+    }
+}
+
+.yearstamp .inner {
+    position: relative;
+}
+
+.yearstamp span {
     display: block;
     padding: 10px 20px;
     font-size: 28px;
-    font-weight: 400; }
-    @media only screen and (max-width: 650px) {
-      .yearstamp span {
+    font-weight: 400;
+}
+
+@media only screen and (max-width: 650px) {
+    .yearstamp span {
         font-size: 18px;
-        padding: 8px 16px; } }
-    @media only screen and (max-width: 400px) {
-      .yearstamp span {
+        padding: 8px 16px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .yearstamp span {
         font-size: 16px;
-        padding: 4px 6px; } }
-  .yearstamp .happy, .yearstamp .year {
+        padding: 4px 6px;
+    }
+}
+
+.yearstamp .happy, .yearstamp .year {
     position: absolute;
     z-index: 2;
     top: 2px;
     font-size: 36px;
-    color: #c4dcf6; }
-    @media only screen and (max-width: 650px) {
-      .yearstamp .happy, .yearstamp .year {
-        font-size: 24px; } }
-    @media only screen and (max-width: 400px) {
-      .yearstamp .happy, .yearstamp .year {
-        font-size: 18px; } }
-  .yearstamp .happy {
-    left: -120px; }
-    @media only screen and (max-width: 650px) {
-      .yearstamp .happy {
-        left: -80px; } }
-    @media only screen and (max-width: 400px) {
-      .yearstamp .happy {
-        left: -60px; } }
-  .yearstamp .year {
-    right: -90px; }
-    @media only screen and (max-width: 650px) {
-      .yearstamp .year {
-        right: -60px; } }
-    @media only screen and (max-width: 400px) {
-      .yearstamp .year {
-        right: -45px; } }
-  .yearstamp.hidden#y2014 {
-    right: 50px; }
-    .yearstamp.hidden#y2014 .happy, .yearstamp.hidden#y2014 .year {
-      display: none; }
-    @media only screen and (max-width: 650px) {
-      .yearstamp.hidden#y2014 {
-        right: 10px; } }
-  .yearstamp.hidden#y2013 {
-    left: 50px; }
-    @media only screen and (max-width: 650px) {
-      .yearstamp.hidden#y2013 {
-        left: 10px; } }
-  .yearstamp.active {
+    color: #c4dcf6;
+}
+
+@media only screen and (max-width: 650px) {
+    .yearstamp .happy, .yearstamp .year {
+        font-size: 24px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .yearstamp .happy, .yearstamp .year {
+        font-size: 18px;
+    }
+}
+
+.yearstamp .happy {
+    left: -120px;
+}
+
+@media only screen and (max-width: 650px) {
+    .yearstamp .happy {
+        left: -80px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .yearstamp .happy {
+        left: -60px;
+    }
+}
+
+.yearstamp .year {
+    right: -90px;
+}
+
+@media only screen and (max-width: 650px) {
+    .yearstamp .year {
+        right: -60px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .yearstamp .year {
+        right: -45px;
+    }
+}
+
+.yearstamp.hidden#y2014 {
+    right: 50px;
+}
+
+.yearstamp.hidden#y2014 .happy, .yearstamp.hidden#y2014 .year {
+    display: none;
+}
+
+@media only screen and (max-width: 650px) {
+    .yearstamp.hidden#y2014 {
+        right: 10px;
+    }
+}
+
+.yearstamp.hidden#y2013 {
+    left: 50px;
+}
+
+@media only screen and (max-width: 650px) {
+    .yearstamp.hidden#y2013 {
+        left: 10px;
+    }
+}
+
+.yearstamp.active {
     margin-left: -50px;
     color: #1e4570;
-    background: #84a6cc; }
-    @media only screen and (max-width: 650px) {
-      .yearstamp.active {
-        margin-left: -30px; } }
-    @media only screen and (max-width: 400px) {
-      .yearstamp.active {
-        margin-left: -20px; } }
+    background: #84a6cc;
+}
+
+@media only screen and (max-width: 650px) {
+    .yearstamp.active {
+        margin-left: -30px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .yearstamp.active {
+        margin-left: -20px;
+    }
+}
 
 #timeline {
-  overflow: hidden;
-  z-index: 3;
-  position: relative;
-  position: absolute;
-  width: 100%;
-  height: 500px;
-  bottom: 50px; }
-  #timeline input {
+    overflow: scroll;
+    z-index: 3;
+    position: absolute;
+    width: 100%;
+    height: 500px;
+    bottom: 25%;
+}
+
+#timeline input {
     width: 0;
+    right: 0;
     height: 1px;
     outline: none !important;
     resize: none !important;
     opacity: 0 !important;
     border: none;
-    background: none; }
-  #timeline .days {
+    background: none;
     position: absolute;
-    bottom: 0;
-    white-space: nowrap; }
-  #timeline .days > div {
+}
+
+#timeline .days {
+    position: absolute;
+    bottom: 10px;
+    white-space: nowrap;
+}
+
+#timeline .days #dy2014, #timeline .days #dy2013 {
+    position: relative;
+    display: inline-block;
+}
+
+#timeline .days #dy2013 > div, #timeline .days #dy2014 > div {
     display: inline-block;
     width: 5px;
-    border-right: 1px solid white;
-    height: 10px; }
+    border-right: 1px solid #c0d8e8;
+    height: 10px;
+}
+
