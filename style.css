@@ -61,6 +61,13 @@ html, body {
   background: -o-linear-gradient(top, #06305f 0%, #274d77 28%, #aaccf0 89%, #b8daff 100%);
   background: linear-gradient(top, #06305f 0%, #274d77 28%, #aaccf0 89%, #b8daff 100%); }
 
+.hidden {
+  opacity: 0;
+  display: none; }
+  @media only screen and (max-width: 760px) {
+    .hidden .mobile {
+      display: none; } }
+
 center {
   text-align: center;
   z-index: 2;
@@ -187,3 +194,27 @@ header {
     @media only screen and (max-width: 400px) {
       .yearstamp.active {
         margin-left: -20px; } }
+
+#timeline {
+  overflow: scroll;
+  z-index: 3;
+  position: relative;
+  position: absolute;
+  width: 100%;
+  bottom: 50px; }
+  #timeline input {
+    width: 0;
+    height: 1px;
+    outline: none !important;
+    resize: none !important;
+    opacity: 0 !important;
+    border: none;
+    background: none; }
+  #timeline .days {
+    white-space: nowrap;
+    height: 100px; }
+  #timeline .days > div {
+    display: inline-block;
+    width: 5px;
+    border: 1px solid red;
+    height: 10px; }
