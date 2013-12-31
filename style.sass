@@ -151,15 +151,18 @@ header
   width: 100%
   bottom: 50px
 
-  .days
-    white-space: nowrap
-
-  .days > input
+  input
     width: 0
     height: 1px
     outline: none !important
     resize: none !important
-    opacity: 0.0
+    opacity: 0.0 !important
+    border: none
+    background: none
+
+  .days
+    white-space: nowrap
+    height: 100px
 
   .days > div
     display: inline-block

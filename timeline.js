@@ -1,14 +1,8 @@
-
-
 $(function() {
-
-   $("#timeline").scroll(function(event, delta) {
-    console.log("t");
-      this.scrollRight -= (delta * 30);
-    
-      event.preventDefault();
-
-   });
+  $("#timeline").mousewheel(function(event, delta) {
+    this.scrollLeft -= (delta * 30);
+    event.preventDefault();
+  });
 
   days = [];
   monthNames = [ "January", "February", "March", "April", "May", "June",
