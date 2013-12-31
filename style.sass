@@ -1,8 +1,25 @@
 @import compass/css3
 @import compass/reset
 
-@function aj ($size)
-  @return $size
+
+@mixin retina
+  @media only screen and (-Webkit-min-device-pixel-ratio: 1.5), only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (min-device-pixel-ratio: 1.5)
+    @content
+
+@mixin more-than ($mnw)
+  @media only screen and (min-width: $mnw) and (min-device-width: $mnw)
+    @content
+
+@mixin max-min-width ($mxw, $mnw)
+  @media only screen and (max-width: $mxw) and (max-device-width: $mxw) and (min-width: $mnw) and (min-device-width: $mnw)
+    @content
+
+@mixin less-than ($mxw)
+  @media only screen and (max-width: $mxw)
+    @content
+
+@function aj ($s)
+  @return $s
 
 html, body
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif
@@ -37,31 +54,35 @@ header
   
   span
     display: block
-    padding: aj(10px) aj(20px)
-    font-size: aj(28px)
+    padding: 10px 20px
+    font-size: 28px
     font-weight: 400
 
   .happy, .year
     position: absolute
     z-index: 2
     top: 2px
-    font-size: aj(36px)
+    font-size: 36px
+    +less-than(500px)
+      font-size: 24px
     color: #C4DCF6
 
   .happy
-    left: aj(-120px)
+    left: -120px
+    +less-than(500px)
+      left: -80px
 
   .year
-    right: aj(-90px)
+    right: -60px
 
   &.hidden
     &#y2014
       .happy, .year
         display: none
-      right: aj(50px)
+      right: 50px
 
     &#y2013
-      left: aj(50px)
+      left: 50px
 
   &.active
     color: #1E4570
