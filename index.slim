@@ -8,4 +8,13 @@ html
     script src='/jquery.browser.min.js'
     script src='/timeline.js'
   body
-    | init
+    .wrapper-background
+      header
+        center
+          .yearstamp.hidden#y2013
+            .inner: span 2013
+          .yearstamp.active#y2014
+              .inner
+                .happy Happy
+                .year year!
+                span 2014

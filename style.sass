@@ -1,6 +1,68 @@
 @import compass/css3
 @import compass/reset
 
+@function aj ($size)
+  @return $size
+
 html, body
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif
   font-weight: 100
+
+.wrapper-background
+  position: absolute
+  width: 100%
+  height: 100%
+  z-index: 1
+  +background(linear-gradient(top, #06305F 0%, #274D77 28%, #AACCF0 89%, #B8DAFF 100%))
+
+center
+  text-align: center
+  z-index: 2
+  margin: 0 auto
+
+header
+  position: relative
+  margin-top: 5%
+
+.yearstamp
+  display: inline-block
+  +border-radius(8px)
+  background: transparent
+  border: 1px solid #84A6CC
+  position: absolute
+  color: #84A6CC
+
+  .inner
+    position: relative
+  
+  span
+    display: block
+    padding: aj(10px) aj(20px)
+    font-size: aj(28px)
+    font-weight: 400
+
+  .happy, .year
+    position: absolute
+    z-index: 2
+    top: 2px
+    font-size: aj(36px)
+    color: #C4DCF6
+
+  .happy
+    left: aj(-120px)
+
+  .year
+    right: aj(-90px)
+
+  &.hidden
+    &#y2014
+      .happy, .year
+        display: none
+      right: aj(50px)
+
+    &#y2013
+      left: aj(50px)
+
+  &.active
+    color: #1E4570
+    background: #84A6CC
