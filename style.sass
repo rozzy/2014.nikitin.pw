@@ -142,3 +142,29 @@ header
       margin-left: -20px
     color: #1E4570
     background: #84A6CC
+
+#timeline
+  overflow: scroll
+  z-index: 3
+  position: relative
+  position: absolute
+  width: 100%
+  bottom: 50px
+
+  .days
+    white-space: nowrap
+
+  .days > input
+    width: 0
+    height: 1px
+    outline: none !important
+    resize: none !important
+    opacity: 0.0
+
+  .days > div
+    display: inline-block
+    width: 5px
+    border: 1px solid red
+    height: 10px
+
+
