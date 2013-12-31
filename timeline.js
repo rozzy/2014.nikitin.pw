@@ -1,8 +1,7 @@
 $(function() {
   mobile = $('.mobile').css("display") != "block"
-  alert(mobile);
+
   if (!mobile) {
-    debiki.Utterscroll.enable();
     $("#timeline").mousewheel(function(event, delta) {
       this.scrollLeft -= (delta * 30);
       event.preventDefault();
@@ -13,14 +12,15 @@ $(function() {
   monthNames = [ "January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December" ];
   function getDaysInMonth(month, year) {
-       // Since no month has fewer than 28 days
        var date = new Date(year, month, 1);
        
        while (date.getMonth() === month) {
           day = new Date(date);
+          console.log(day.getDate());
           days.push(monthNames[day.getMonth()] + ', ' + day.getDate());
           date.setDate(date.getDate() + 1);
        }
+       $("#timeline .days div:eq("+days.length+")").css({height: 20, marginBottom: -5});
   }
       
   for (i = 0; i < 12; i++) getDaysInMonth(i, 2013);
