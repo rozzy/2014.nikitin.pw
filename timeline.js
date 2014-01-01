@@ -6,6 +6,22 @@ function chainFadein (objects) {
   });
 }
 
+function switchYear () {
+  year = $('#timeline .days #dy2014').offset().left <= 732 ? '2014' : '2013';
+    // getting active date
+    // a = $('.days #dy' + year, document.body).children().filter(function () {
+    //   todayOffset = (-1 * $('#timeline .days #dy' + year).offset().left) + $(window).width()/2;
+    //   innerOffset = 5;
+    //   return this.offsetLeft >= todayOffset - innerOffset && this.offsetLeft <= todayOffset + innerOffset;
+    // });
+    // console.log(a);
+    if ($('.yearstamp.active').attr('id') != '#y' + year) {
+      console.log('switch year: ' + year);
+      $('.yearstamp.active').addClass('hidden').removeClass('active');
+      $('.yearstamp#y' + year).addClass('active').removeClass('hidden');
+    }
+}
+
 function addGithubContributions (contribs) {
   contribs = JSON.parse(contribs);
   $.each(contribs, function (key, data) {
@@ -112,7 +128,10 @@ $(function() {
   sly.one('load', function () {
     $.get('contribs.js', addGithubContributions);
     $('#timeline, .fadein').fadeTo(1500, 1.0);
-    if (!mobile) $(window).resize(sly.reload);
+    if (!mobile) $(window).resize(function () {
+      switchYear();
+      sly.reload();
+    });
     createPeriod("2013/02/10");
     sly.slideTo($('.days div[title="Today"]').offset().left - $(window).width()/2);
     
@@ -129,22 +148,7 @@ $(function() {
      setTimeout(function () {$('.drag_tip').parent().remove();}, 4000);
     });
 
-    sly.on('moveEnd', function () {
-      year = $('#timeline .days #dy2014').offset().left <= 732 ? '2014' : '2013';
-      // getting active date
-      // a = $('.days #dy' + year, document.body).children().filter(function () {
-      //   todayOffset = (-1 * $('#timeline .days #dy' + year).offset().left) + $(window).width()/2;
-      //   innerOffset = 5;
-      //   return this.offsetLeft >= todayOffset - innerOffset && this.offsetLeft <= todayOffset + innerOffset;
-      // });
-      // console.log(a);
-      if ($('.yearstamp.active').attr('id') != '#y' + year) {
-        console.log('switch year: ' + year);
-        $('.yearstamp.active').addClass('hidden').removeClass('active');
-        $('.yearstamp#y' + year).addClass('active').removeClass('hidden');
-      }
-    });
+    sly.on('moveEnd', switchYear);
   });
-
   sly.init();
 });
