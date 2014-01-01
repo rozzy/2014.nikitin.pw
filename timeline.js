@@ -6,6 +6,20 @@ function chainFadein (objects) {
   });
 }
 
+function addGithubContributions (contribs) {
+  contribs = JSON.parse(contribs);
+  $.each(contribs, function (key, data) {
+    if (data[1] > 0) {
+      $('.days div[date="'+data[0]+'"]').append("<span class='github_wrapper'><span class='github_contrubutions'></span></span>");
+      for (var i = 0; i < data[1]; i++) {
+        $('<span/>', {k: key + i, css: {borderColor: $('.days div[date="'+data[0]+'"]').css('border-color'), opacity: 0.0}, title: data[1]+" github contributions"}).appendTo('.days div[date="'+data[0]+'"] .github_wrapper .github_contrubutions');
+      }    
+      chainFadein($('.days div[date="'+data[0]+'"] .github_contrubutions').children());
+    }
+  });
+  $("#timeline .days div[title='Today'] .github_contrubutions span").css({marginLeft: 0, 'border-width': 2});
+}
+
 function switchYear () {
   year = $('#today_line').offset().left > $('#timeline .days #dy2014').offset().left - 10 ? '2014' : '2013';
   // year = $('#timeline .days #dy2014').offset().left <= 732 ? '2014' : '2013';
@@ -22,18 +36,10 @@ function switchYear () {
     }
 }
 
-function addGithubContributions (contribs) {
-  contribs = JSON.parse(contribs);
-  $.each(contribs, function (key, data) {
-    if (data[1] > 0) {
-      $('.days div[date="'+data[0]+'"]').append("<span class='github_wrapper'><span class='github_contrubutions'></span></span>");
-      for (var i = 0; i < data[1]; i++) {
-        $('<span/>', {k: key + i, css: {borderColor: $('.days div[date="'+data[0]+'"]').css('border-color'), opacity: 0.0}, title: data[1]+" github contributions"}).appendTo('.days div[date="'+data[0]+'"] .github_wrapper .github_contrubutions');
-      }    
-      chainFadein($('.days div[date="'+data[0]+'"] .github_contrubutions').children());
-    }
-  });
-  $("#timeline .days div[title='Today'] .github_contrubutions span").css({marginLeft: 0, 'border-width': 2});
+function plusZero (num, month) {
+  num = month ? num + 1 : num;
+  if (num > 9) return num;
+  return '0' + num;
 }
 
 function highlightTip () {
@@ -41,12 +47,6 @@ function highlightTip () {
     $('.drag_tip').toggleClass('active');
     setTimeout(highlightTip, 5000);
   }
-}
-
-function plusZero (num, month) {
-  num = month ? num + 1 : num;
-  if (num > 9) return num;
-  return '0' + num;
 }
 
 function getPeriodPosition (date) {
