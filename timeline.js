@@ -2,7 +2,10 @@ function addGithubContributions (contribs) {
   $.each(contribs, function (key, data) {
     if (data[1] > 0) {
       $('.days div[date="'+data[0]+'"]').append("<span class='github_wrapper'><span class='github_contrubutions'></span></span>");
-      for (var i = 0; i < data[1]; i++) $('<span/>', {css: {borderColor: $('.days div[date="'+data[0]+'"]').css('border-color')}, title: data[1]+" github contributions"}).appendTo('.days div[date="'+data[0]+'"] .github_wrapper .github_contrubutions');
+      for (var i = 0; i < data[1]; i++) {
+        $('<span/>', {k: key + i, css: {borderColor: $('.days div[date="'+data[0]+'"]').css('border-color'), opacity: 0.0}, title: data[1]+" github contributions"}).appendTo('.days div[date="'+data[0]+'"] .github_wrapper .github_contrubutions');
+        $('.days div[date="'+data[0]+'"] span[k="'+(key+i)+'"]').animate({opacity: 1.0}, 2500);
+      }
     }
   });
 }

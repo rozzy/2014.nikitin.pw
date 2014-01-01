@@ -190,6 +190,10 @@ header
     height: 10px
     position: relative
 
+    &:hover
+      border-color: white !important
+      cursor: pointer
+
     .github_wrapper
       position: absolute
       top: 0
@@ -200,11 +204,14 @@ header
         position: absolute
 
         span
-          width: 1px
+          width: 10px
           height: 3px
           margin-bottom: 2px
           border-left: 1px solid #C0D8E8
           display: block
+
+          &:hover
+            border-left: 1px solid white !important 
     
     span.month_name
       position: absolute
