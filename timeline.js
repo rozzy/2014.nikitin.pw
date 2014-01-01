@@ -1,3 +1,11 @@
+function chainFadein (objects) {
+  start = 500; 
+  $(objects.get().reverse()).each(function (a, b) {
+    setTimeout(function () {$(b).fadeTo(0.0, 1.0);}, start)
+    start += 20;
+  });
+}
+
 function addGithubContributions (contribs) {
   contribs = JSON.parse(contribs);
   $.each(contribs, function (key, data) {
@@ -5,11 +13,18 @@ function addGithubContributions (contribs) {
       $('.days div[date="'+data[0]+'"]').append("<span class='github_wrapper'><span class='github_contrubutions'></span></span>");
       for (var i = 0; i < data[1]; i++) {
         $('<span/>', {k: key + i, css: {borderColor: $('.days div[date="'+data[0]+'"]').css('border-color'), opacity: 0.0}, title: data[1]+" github contributions"}).appendTo('.days div[date="'+data[0]+'"] .github_wrapper .github_contrubutions');
-        $('.days div[date="'+data[0]+'"] span[k="'+(key+i)+'"]').animate({opacity: 1.0}, 2500 + (Math.random() * 2000));
       }    
+      chainFadein($('.days div[date="'+data[0]+'"] .github_contrubutions').children());
     }
   });
   $("#timeline .days div[title='Today'] .github_contrubutions span").css({marginLeft: 0, 'border-width': 2});
+}
+
+function highlightTip () {
+  if ($('.drag_tip').size() > 0) {
+    $('.drag_tip').toggleClass('active');
+    setTimeout(highlightTip, 5000);
+  }
 }
 
 function plusZero (num, month) {
@@ -65,6 +80,7 @@ $(function() {
   mobile = $('.mobile').css("display") != "block"
 
   $('#timeline').css('overflow', 'hidden');
+  $('.fadein').css('opacity', 0.0);
 
   Date.prototype.getDOY = function() {
     var onejan = new Date(this.getFullYear(),0,1);
@@ -74,8 +90,6 @@ $(function() {
   days = [];
   monthNames = [ "January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December" ];
-  
-  $.get('contribs.js', addGithubContributions);
 
   $('#timeline #dy2013 div:last').append($("<span/>", {html: '2014', class: 'month_name huge_cap'}));
       
@@ -83,6 +97,8 @@ $(function() {
   for (i = 0; i < 3; i++) getDaysInMonth(i, 2014);
   $('#timeline .days #dy2013 .month_name:first').css('left', 0);
   
+  highlightTip();
+
   sly = new Sly($('#timeline'), {
     horizontal: true,
     itemSelector: '.days',
@@ -94,15 +110,41 @@ $(function() {
   });
 
   sly.one('load', function () {
-    $('#timeline').fadeTo(1500, 1.0);
-    $(window).resize(function(e) {
-      sly.reload();
-    });
+    $.get('contribs.js', addGithubContributions);
+    $('#timeline, .fadein').fadeTo(1500, 1.0);
+    if (!mobile) $(window).resize(sly.reload);
     createPeriod("2013/02/10");
-    sly.slideTo($('.days div[title="Today"]').offset().left - $(window).width());
-  });
+    sly.slideTo($('.days div[title="Today"]').offset().left - $(window).width()/2);
+    
+    $('#timeline').bind('mousedown', function () {
+      $(this).removeClass('grab').addClass('grabbing');
+    });
 
-  sly.on();
+    $('#timeline').bind('mouseup', function () {
+      $(this).removeClass('grabbing').addClass('grab');
+    });
+    
+    sly.one('moveStart', function () {
+     $('.drag_tip').addClass('removed');
+     setTimeout(function () {$('.drag_tip').parent().remove();}, 4000);
+    });
+
+    sly.on('moveEnd', function () {
+      year = $('#timeline .days #dy2014').offset().left <= 732 ? '2014' : '2013';
+      // getting active date
+      // a = $('.days #dy' + year, document.body).children().filter(function () {
+      //   todayOffset = (-1 * $('#timeline .days #dy' + year).offset().left) + $(window).width()/2;
+      //   innerOffset = 5;
+      //   return this.offsetLeft >= todayOffset - innerOffset && this.offsetLeft <= todayOffset + innerOffset;
+      // });
+      // console.log(a);
+      if ($('.yearstamp.active').attr('id') != '#y' + year) {
+        console.log('switch year: ' + year);
+        $('.yearstamp.active').addClass('hidden').removeClass('active');
+        $('.yearstamp#y' + year).addClass('active').removeClass('hidden');
+      }
+    });
+  });
 
   sly.init();
 });
