@@ -105,11 +105,11 @@ header {
 }
 
 .grab {
-    cursor: url(https://mail.google.com/mail/images/2/openhand.cur) 8 8, move;
+    cursor: url(openhand.cur) 8 8, move;
 }
 
 .grabbing {
-    cursor: url(https://mail.google.com/mail/images/2/closedhand.cur) 8 8, move;
+    cursor: url(closedhand.cur) 8 8, move;
 }
 
 .wishes {
@@ -151,6 +151,22 @@ header {
     }
 }
 
+#today_line {
+    width: 2px;
+    background: #fafafa;
+    position: absolute;
+    z-index: 3;
+    height: 100%;
+    top: 0;
+    display: inline-block;
+    background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjUwJSIgeTE9IjAlIiB4Mj0iNTAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzA5MzM2MSIvPjxzdG9wIG9mZnNldD0iMjklIiBzdG9wLWNvbG9yPSIjMjk0Zjc4Ii8+PHN0b3Agb2Zmc2V0PSI0OCUiIHN0b3AtY29sb3I9IiM1Mjc2OWUiLz48c3RvcCBvZmZzZXQ9IjYzJSIgc3RvcC1jb2xvcj0iIzc3OWFjMCIvPjxzdG9wIG9mZnNldD0iNzglIiBzdG9wLWNvbG9yPSIjZTZmMGZhIi8+PHN0b3Agb2Zmc2V0PSI4NSUiIHN0b3AtY29sb3I9IiNhMmM0ZTgiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNiOGRhZmYiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWQpIiAvPjwvc3ZnPiA=');
+    background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #093361), color-stop(29%, #294f78), color-stop(48%, #52769e), color-stop(63%, #779ac0), color-stop(78%, #e6f0fa), color-stop(85%, #a2c4e8), color-stop(100%, #b8daff));
+    background: -webkit-linear-gradient(top, #093361 0%, #294f78 29%, #52769e 48%, #779ac0 63%, #e6f0fa 78%, #a2c4e8 85%, #b8daff 100%);
+    background: -moz-linear-gradient(top, #093361 0%, #294f78 29%, #52769e 48%, #779ac0 63%, #e6f0fa 78%, #a2c4e8 85%, #b8daff 100%);
+    background: -o-linear-gradient(top, #093361 0%, #294f78 29%, #52769e 48%, #779ac0 63%, #e6f0fa 78%, #a2c4e8 85%, #b8daff 100%);
+    background: linear-gradient(top, #093361 0%, #294f78 29%, #52769e 48%, #779ac0 63%, #e6f0fa 78%, #a2c4e8 85%, #b8daff 100%);
+}
+
 .yearstamp {
     display: inline-block;
     -webkit-border-radius: 8px;
@@ -190,15 +206,15 @@ header {
 
 .yearstamp span {
     display: block;
-    padding: 10px 20px;
-    font-size: 28px;
+    padding: 5px 15px;
+    font-size: 33px;
     font-weight: 400;
 }
 
 @media only screen and (max-width: 650px) {
     .yearstamp span {
-        font-size: 18px;
-        padding: 8px 16px;
+        font-size: 22px;
+        padding: 4px 12px;
     }
 }
 
@@ -303,6 +319,39 @@ header {
     }
 }
 
+.drag_tip {
+    position: absolute;
+    bottom: 40px;
+    z-index: 5;
+    width: auto;
+    margin-left: -60px;
+    color: white;
+    font-weight: 300;
+    text-shadow: 0 0 20px white, 0 0 15px white, 0 0 5px white;
+    -webkit-transition: all 4s ease-in-out;
+    -moz-transition: all 4s ease-in-out;
+    -o-transition: all 4s ease-in-out;
+    transition: all 4s ease-in-out;
+}
+
+.drag_tip.active {
+    text-shadow: 0 0 5px #abccf0;
+}
+
+.drag_tip.removed {
+    opacity: 0;
+}
+
+.drag_tip span {
+    font-size: 16px;
+    vertical-align: middle;
+}
+
+.drag_tip span.message {
+    padding: 0 10px;
+    font-size: 18px;
+}
+
 #timeline {
     overflow: scroll;
     z-index: 3;
@@ -382,6 +431,7 @@ header {
     left: -6px;
     font-size: 14px;
     color: #c0d8e8;
+    z-index: 4;
 }
 
 #timeline .days #dy2013 > div span.month_name.huge_cap, #timeline .days #dy2014 > div span.month_name.huge_cap {
