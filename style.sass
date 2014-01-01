@@ -186,11 +186,27 @@ header
   .days #dy2013 > div, .days #dy2014 > div
     display: inline-block
     width: 5px
-    border-right: 1px solid #C0D8E8
+    border-left: 1px solid #C0D8E8
     height: 10px
     position: relative
+
+    .github_wrapper
+      position: absolute
+      top: 0
+
+      .github_contrubutions
+        left: -1px
+        bottom: 0
+        position: absolute
+
+        span
+          width: 1px
+          height: 3px
+          margin-bottom: 2px
+          border-left: 1px solid #C0D8E8
+          display: block
     
-    span
+    span.month_name
       position: absolute
       bottom: -25px
       left: -6px
