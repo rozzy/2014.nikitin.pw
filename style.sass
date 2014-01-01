@@ -85,6 +85,17 @@ header
     +less-than(400px)
       width: 150px
 
+#today_line
+  width: 2px
+  background: #fafafa
+  position: absolute
+  z-index: 3
+  height: 100%
+  top: 0
+  display: inline-block
+  +background(linear-gradient(top, #093361 0%, #294F78 29%, #52769E 48%, #779AC0 63%, #E6F0FA 78%, #A2C4E8 85%, #B8DAFF 100%))
+
+
 .yearstamp
   display: inline-block
   +border-radius(8px)
@@ -253,6 +264,7 @@ header
       left: -6px
       font-size: 14px
       color: #C0D8E8
+      z-index: 4
 
       &.huge_cap
         color: #FFFFFF

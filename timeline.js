@@ -128,6 +128,22 @@ $(function() {
      $('.drag_tip').addClass('removed');
      setTimeout(function () {$('.drag_tip').parent().remove();}, 4000);
     });
+
+    sly.on('moveEnd', function () {
+      year = $('#timeline .days #dy2014').offset().left <= 732 ? '2014' : '2013';
+      // getting active date
+      // a = $('.days #dy' + year, document.body).children().filter(function () {
+      //   todayOffset = (-1 * $('#timeline .days #dy' + year).offset().left) + $(window).width()/2;
+      //   innerOffset = 5;
+      //   return this.offsetLeft >= todayOffset - innerOffset && this.offsetLeft <= todayOffset + innerOffset;
+      // });
+      // console.log(a);
+      if ($('.yearstamp.active').attr('id') != '#y' + year) {
+        console.log('switch year: ' + year);
+        $('.yearstamp.active').addClass('hidden').removeClass('active');
+        $('.yearstamp#y' + year).addClass('active').removeClass('hidden');
+      }
+    });
   });
 
   sly.init();
