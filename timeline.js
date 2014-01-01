@@ -1,5 +1,16 @@
 function addGithubContributions (contribs) {
-  console.log(contribs);
+  $.each(contribs, function (key, data) {
+    if (data[1] > 0) {
+      $('.days div[date="'+data[0]+'"]').append("<span class='github_wrapper'><span class='github_contrubutions'></span></span>");
+      for (var i = 0; i < data[1]; i++) $('<span/>', {css: {borderColor: $('.days div[date="'+data[0]+'"]').css('border-color')}, title: data[1]+" github contributions"}).appendTo('.days div[date="'+data[0]+'"] .github_wrapper .github_contrubutions');
+    }
+  });
+}
+
+function plusZero (num, month) {
+  num = month ? num + 1 : num;
+  if (num > 9) return num;
+  return '0' + num;
 }
 
 function getDaysInMonth(month, year) {
@@ -15,7 +26,7 @@ function getDaysInMonth(month, year) {
       day = new Date(date);
       days.push(monthNames[day.getMonth()] + ', ' + day.getDate());
 
-      $('#timeline #dy'+year+' div:eq('+day.getDOY()+')').attr("title", monthNames[day.getMonth()] + ', ' + day.getDate());
+      $('#timeline #dy'+year+'>div:eq('+day.getDOY()+')').attr("title", monthNames[day.getMonth()] + ', ' + day.getDate()).attr('date', year + '/' + plusZero(day.getMonth(), true) + '/' + plusZero(day.getDate(), false));
       border_color = $('#timeline #dy'+year+' div:eq('+day.getDOY()+')').css('border-color');
       if (day.getDate() == 1 && year == 2013) $('#timeline #dy'+year+' div:eq('+day.getDOY()+')').append($("<span/>", {html: monthNames[day.getMonth()].substr(0, 3), class: 'month_name', css: {color: border_color}}));
       if ($('#timeline #dy'+year+' div:eq('+day.getDOY()+') .github_contrubutions').size() > 0) $('#timeline #dy'+year+' div:eq('+day.getDOY()+') .github_contrubutions span').css('border-color', border_color);
@@ -47,11 +58,7 @@ $(function() {
   monthNames = [ "January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December" ];
   
-  $.get('https://github.com/users/rozzy/contributions_calendar_data?_=1388576157349', function (a) {
-    s = [];
-    $.each(a, function (b, c) {s[b] = c[1];});
-    addGithubContributions(s);
-  });
+  $.get('https://github.com/users/rozzy/contributions_calendar_data?_=1388576157349', addGithubContributions);
 
   $('#timeline #dy2013 div:last').append($("<span/>", {html: '2014', class: 'month_name huge_cap'}));
       
