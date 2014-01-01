@@ -25,7 +25,7 @@ function getDaysInMonth(month, year) {
     var rainbow = new Rainbow(); 
     rainbow.setNumberRange(1, numberOfItems);
     rainbow.setSpectrum('#C0D8E8', '#8DA7D0');
-    for (var i = 0; i < numberOfItems; i++) $("#dy2014 div:eq("+i+"), #dy2013 div:eq("+(numberOfItems-i-1)+")").css("border-color", '#'+rainbow.colourAt(i));
+    for (var i = 0; i < numberOfItems; i++) $("#dy2014 div:eq("+i+")").css("border-color", '#'+rainbow.colourAt(i));
 
     while (date.getMonth() === month) {
       day = new Date(date);
@@ -37,7 +37,6 @@ function getDaysInMonth(month, year) {
       if ($('#timeline #dy'+year+' div:eq('+day.getDOY()+') .github_contrubutions').size() > 0) $('#timeline #dy'+year+' div:eq('+day.getDOY()+') .github_contrubutions span').css('border-color', border_color);
       date.setDate(date.getDate() + 1); 
     }
-
     $("#timeline .days div:eq("+(days.length + 1)+")").css({height: 20, marginBottom: -5});
 
     today = new Date();
@@ -66,7 +65,7 @@ $(function() {
       
   for (i = 0; i < 12; i++) getDaysInMonth(i, 2013);
   for (i = 0; i < 3; i++) getDaysInMonth(i, 2014);
-
+  $('#timeline .days #dy2013 .month_name:first').css('left', 0);
   $('#timeline').fadeTo(1500, 1.0, function () {
     var sly = new Sly($('#timeline'), {
       horizontal: true,
