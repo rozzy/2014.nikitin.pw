@@ -104,6 +104,14 @@ header {
     z-index: 5;
 }
 
+.grab {
+    cursor: url(https://mail.google.com/mail/images/2/openhand.cur) 8 8, move;
+}
+
+.grabbing {
+    cursor: url(https://mail.google.com/mail/images/2/closedhand.cur) 8 8, move;
+}
+
 .wishes {
     position: absolute;
     top: 100px;
@@ -300,6 +308,7 @@ header {
     z-index: 3;
     position: absolute;
     top: 0;
+    opacity: 0;
     width: 100%;
     height: 100%;
 }
@@ -347,13 +356,14 @@ header {
 
 #timeline .days #dy2013 > div .github_wrapper .github_contrubutions,
 #timeline .days #dy2014 > div .github_wrapper .github_contrubutions {
-    left: -1px;
+    left: -2px;
     bottom: 0;
     position: absolute;
 }
 
 #timeline .days #dy2013 > div .github_wrapper .github_contrubutions span,
 #timeline .days #dy2014 > div .github_wrapper .github_contrubutions span {
+    margin-left: 1px;
     width: 10px;
     height: 3px;
     margin-bottom: 2px;
@@ -363,7 +373,7 @@ header {
 
 #timeline .days #dy2013 > div .github_wrapper .github_contrubutions span:hover,
 #timeline .days #dy2014 > div .github_wrapper .github_contrubutions span:hover {
-    border-left: 1px solid white !important;
+    border-left-color: 1px solid white !important;
 }
 
 #timeline .days #dy2013 > div span.month_name, #timeline .days #dy2014 > div span.month_name {
@@ -371,10 +381,11 @@ header {
     bottom: -25px;
     left: -6px;
     font-size: 14px;
-    color: #c0d8e8;
+    color: white;
 }
 
 #timeline .days #dy2013 > div span.month_name.huge_cap, #timeline .days #dy2014 > div span.month_name.huge_cap {
+    color: white;
     font-size: 24px;
     bottom: -45px;
     left: -20px;
