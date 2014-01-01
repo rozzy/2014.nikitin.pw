@@ -12,6 +12,13 @@ function addGithubContributions (contribs) {
   $("#timeline .days div[title='Today'] .github_contrubutions span").css({marginLeft: 0, 'border-width': 2});
 }
 
+function highlightTip () {
+  if ($('.drag_tip').size() > 0) {
+    $('.drag_tip').toggleClass('active');
+    setTimeout(highlightTip, 5000);
+  }
+}
+
 function plusZero (num, month) {
   num = month ? num + 1 : num;
   if (num > 9) return num;
@@ -83,6 +90,8 @@ $(function() {
   for (i = 0; i < 3; i++) getDaysInMonth(i, 2014);
   $('#timeline .days #dy2013 .month_name:first').css('left', 0);
   
+  highlightTip();
+
   sly = new Sly($('#timeline'), {
     horizontal: true,
     itemSelector: '.days',
@@ -95,14 +104,14 @@ $(function() {
 
   sly.one('load', function () {
     $('#timeline').fadeTo(1500, 1.0);
-    $(window).resize(function(e) {
-      sly.reload();
-    });
+    if (!mobile) $(window).resize(sly.reload);
     createPeriod("2013/02/10");
     sly.slideTo($('.days div[title="Today"]').offset().left - $(window).width());
+    sly.one('moveStart', function () {
+     $('.drag_tip').addClass('removed');
+     setTimeout(function () {$('.drag_tip').parent().remove();}, 4000);
+    });
   });
-
-  sly.on();
 
   sly.init();
 });
