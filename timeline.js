@@ -18,6 +18,23 @@ function plusZero (num, month) {
   return '0' + num;
 }
 
+function getPeriodPosition (date) {
+  if ($('.days div[date="'+ date +'"]').size() > 0) {}
+  else return buildDate();
+}
+
+function createPeriod (start, end) {
+  if ($('.days div[date="'+ start +'"]').size() > 0) {
+    start_pos = getPeriodPosition(start);
+    end_pos = getPeriodPosition(end);
+    console.log('length: ', length);
+  }
+}
+
+function buildDate (year, month, day) {
+  return year + '/' + plusZero(month, true) + '/' + plusZero(day);
+}
+
 function getDaysInMonth(month, year) {
     var date = new Date(year, month, 1);
     
@@ -25,24 +42,22 @@ function getDaysInMonth(month, year) {
     var rainbow = new Rainbow(); 
     rainbow.setNumberRange(1, numberOfItems);
     rainbow.setSpectrum('#C0D8E8', '#8DA7D0');
-    for (var i = 0; i < numberOfItems; i++) $("#dy2014 div:eq("+i+"), #dy2013 div:eq("+(numberOfItems-i-1)+")").css("border-color", '#'+rainbow.colourAt(i));
+    for (var i = 0; i < numberOfItems; i++) $("#dy2014 div:eq("+i+")").css("border-color", '#'+rainbow.colourAt(i));
 
     while (date.getMonth() === month) {
       day = new Date(date);
       days.push(monthNames[day.getMonth()] + ', ' + day.getDate());
 
-      $('#timeline #dy'+year+'>div:eq('+day.getDOY()+')').attr("title", monthNames[day.getMonth()] + ', ' + day.getDate()).attr('date', year + '/' + plusZero(day.getMonth(), true) + '/' + plusZero(day.getDate(), false));
+      $('#timeline #dy'+year+'>div:eq('+day.getDOY()+')').attr("title", monthNames[day.getMonth()] + ', ' + day.getDate()).attr('date', buildDate(year, day.getMonth(), day.getDate()));
       border_color = $('#timeline #dy'+year+' div:eq('+day.getDOY()+')').css('border-color');
       if (day.getDate() == 1 && year == 2013) $('#timeline #dy'+year+' div:eq('+day.getDOY()+')').append($("<span/>", {html: monthNames[day.getMonth()].substr(0, 3), class: 'month_name', css: {color: border_color}}));
       if ($('#timeline #dy'+year+' div:eq('+day.getDOY()+') .github_contrubutions').size() > 0) $('#timeline #dy'+year+' div:eq('+day.getDOY()+') .github_contrubutions span').css('border-color', border_color);
       date.setDate(date.getDate() + 1); 
     }
-
     $("#timeline .days div:eq("+(days.length + 1)+")").css({height: 20, marginBottom: -5});
 
     today = new Date();
-    $("#timeline .days div[date='"+(today.getFullYear() + '/' + plusZero(today.getMonth(), true) + '/' + plusZero(today.getDate()))+"']").attr('title', 'Today').css({height: 20, borderWidth: 2, marginBottom: -5});
-
+    $("#timeline .days div[date='"+(buildDate(today.getFullYear(), today.getMonth(), today.getDate()))+"']").attr('title', 'Today').css({height: 20, borderWidth: 2, marginBottom: -5});
     $('#timeline #dy2013 div:last').css({height: 50, marginBottom: -20});
 }
 
@@ -66,19 +81,28 @@ $(function() {
       
   for (i = 0; i < 12; i++) getDaysInMonth(i, 2013);
   for (i = 0; i < 3; i++) getDaysInMonth(i, 2014);
-
-  $('#timeline').fadeTo(1500, 1.0, function () {
-    var sly = new Sly($('#timeline'), {
-      horizontal: true,
-      itemSelector: '.days',
-      mouseDragging: 1,
-      touchDragging: 1,
-      releaseSwing: 1,
-      keyboardNavBy: 'items',
-      scrollBy: 10,
-      startAt: 0
-    }).init();
-    sly.slideTo(($('.days div[title="Today"]').offset().left - 750), 2300);
+  $('#timeline .days #dy2013 .month_name:first').css('left', 0);
+  
+  sly = new Sly($('#timeline'), {
+    horizontal: true,
+    itemSelector: '.days',
+    mouseDragging: 1,
+    touchDragging: 1,
+    releaseSwing: 1,
+    scrollBy: 100,
+    startAt: 0
   });
 
+  sly.one('load', function () {
+    $('#timeline').fadeTo(1500, 1.0);
+    $(window).resize(function(e) {
+      sly.reload();
+    });
+    createPeriod("2013/02/10");
+    sly.slideTo($('.days div[title="Today"]').offset().left - $(window).width());
+  });
+
+  sly.on();
+
+  sly.init();
 });
