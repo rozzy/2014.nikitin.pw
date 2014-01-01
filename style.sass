@@ -94,8 +94,7 @@ header
   height: 100%
   top: 0
   display: inline-block
-  +background(linear-gradient(top, #093361 0%, #294F78 29%, #52769E 48%, #779AC0 63%, #E6F0FA 78%, #A2C4E8 85%, #B8DAFF 100%))
-
+  +background(linear-gradient(top, #0B3562 0%, #355B84 35%, #6286AD 55%, #81A3C9 100%))
 
 .yearstamp
   display: inline-block
@@ -201,6 +200,26 @@ header
     padding: 0 10px
     font-size: 18px
 
+
+/// TODO: GITHUB YEAR & MONTH CONTRIBUTIONS
+
+
+
+.git_tooltip
+  z-index: 10 !important
+  color: #356CA9
+  font-size: 12px
+  font-weight: 300
+  position: absolute
+  top: 0
+  left: 7px
+  display: none !important
+  background: #698CB3
+  width: auto !important
+  height: auto !important
+  padding: 2px 3px !important
+  border: none !important
+
 #timeline
   overflow: scroll
   z-index: 3
@@ -246,6 +265,9 @@ header
         color: white !important
         border-color: white !important
 
+      .git_tooltip
+        display: block !important
+
     .github_wrapper
       position: absolute
       top: 0
@@ -269,9 +291,11 @@ header
       left: -6px
       font-size: 14px
       color: #C0D8E8
+      font-weight: 300
       z-index: 4
 
       &.huge_cap
+        font-weight: 300
         color: #FFFFFF
         font-size: 24px
         bottom: -45px

@@ -6,16 +6,16 @@ function chainFadein (objects) {
   });
 }
 
+function getCurrentTimelineDate () {
+  a = $('.days #dy' + year, document.body).children().filter(function () {
+    todayOffset = (-1 * $('#timeline .days #dy' + year).offset().left) + $(window).width()/2;
+    innerOffset = 5;
+    return this.offsetLeft >= todayOffset - innerOffset && this.offsetLeft <= todayOffset + innerOffset;
+  });
+}
+
 function switchYear () {
   year = $('#today_line').offset().left > $('#timeline .days #dy2014').offset().left - 10 ? '2014' : '2013';
-  // year = $('#timeline .days #dy2014').offset().left <= 732 ? '2014' : '2013';
-    // getting active date
-    // a = $('.days #dy' + year, document.body).children().filter(function () {
-    //   todayOffset = (-1 * $('#timeline .days #dy' + year).offset().left) + $(window).width()/2;
-    //   innerOffset = 5;
-    //   return this.offsetLeft >= todayOffset - innerOffset && this.offsetLeft <= todayOffset + innerOffset;
-    // });
-    // console.log(a);
     if ($('.yearstamp.active').attr('id') != '#y' + year) {
       $('.yearstamp.active').addClass('hidden').removeClass('active');
       $('.yearstamp#y' + year).addClass('active').removeClass('hidden');
@@ -30,6 +30,7 @@ function addGithubContributions (contribs) {
       for (var i = 0; i < data[1]; i++) {
         $('<span/>', {k: key + i, css: {borderColor: $('.days div[date="'+data[0]+'"]').css('border-color'), opacity: 0.0}, title: data[1]+" github contributions"}).appendTo('.days div[date="'+data[0]+'"] .github_wrapper .github_contrubutions');
       }    
+      $('<span/>', {class: 'git_tooltip', html: data[1]+" github contributions"}).prependTo('.days div[date="'+data[0]+'"] .github_wrapper .github_contrubutions');
       chainFadein($('.days div[date="'+data[0]+'"] .github_contrubutions').children());
     }
   });
