@@ -186,8 +186,22 @@ header
   .days #dy2013 > div, .days #dy2014 > div
     display: inline-block
     width: 5px
-    border-left: 1px solid #C0D8E8
+    border-right: 1px solid #C0D8E8
     height: 10px
+    position: relative
+    
+    span
+      position: absolute
+      bottom: -25px
+      left: -6px
+      font-size: 14px
+      color: #C0D8E8
+
+      &.huge_cap
+        font-size: 24px
+        bottom: -45px
+        left: -20px
+
 
 
 
