@@ -350,20 +350,6 @@ header {
     text-shadow: 0 0 5px #abccf0;
 }
 
-.drag_tip.removed {
-    opacity: 0;
-}
-
-.drag_tip span {
-    font-size: 16px;
-    vertical-align: middle;
-}
-
-.drag_tip span.message {
-    padding: 0 10px;
-    font-size: 18px;
-}
-
 #timeline {
     overflow: scroll;
     z-index: 3;
@@ -403,6 +389,20 @@ header {
     border-left: 1px solid #c0d8e8;
     height: 10px;
     position: relative;
+}
+
+.drag_tip.removed {
+    opacity: 0;
+}
+
+.drag_tip span {
+    font-size: 16px;
+    vertical-align: middle;
+}
+
+.drag_tip span.message {
+    padding: 0 10px;
+    font-size: 18px;
 }
 
 #timeline .days #dy2013 > div:hover, #timeline .days #dy2014 > div:hover {
