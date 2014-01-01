@@ -53,6 +53,12 @@ header
   margin-top: 5%
   z-index: 5
 
+.grab
+  cursor: url(https://mail.google.com/mail/images/2/openhand.cur) 8 8, move
+
+.grabbing
+  cursor: url(https://mail.google.com/mail/images/2/closedhand.cur) 8 8, move
+
 .wishes
   position: absolute
   top: 100px
@@ -159,12 +165,13 @@ header
   z-index: 3
   position: absolute
   top: 0
+  opacity: 0.0
   width: 100%
   height: 100%
 
   input
     width: 0
-    right: 0
+    right: 900px
     height: 1px
     outline: none !important
     resize: none !important
@@ -199,11 +206,12 @@ header
       top: 0
 
       .github_contrubutions
-        left: -1px
+        left: -2px
         bottom: 0
         position: absolute
 
         span
+          margin-left: 1px
           width: 10px
           height: 3px
           margin-bottom: 2px
@@ -211,16 +219,17 @@ header
           display: block
 
           &:hover
-            border-left: 1px solid white !important 
+            border-left-color: 1px solid white !important 
     
     span.month_name
       position: absolute
       bottom: -25px
       left: -6px
       font-size: 14px
-      color: #C0D8E8
+      color: #FFFFFF
 
       &.huge_cap
+        color: #FFFFFF
         font-size: 24px
         bottom: -45px
         left: -20px
