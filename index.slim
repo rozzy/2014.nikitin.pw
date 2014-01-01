@@ -18,7 +18,7 @@ html
     script src='timeline.js'
   body
     .wrapper-background
-      header
+      header.fadein
         center
           .yearstamp.hidden#y2013
             .inner: span 2013
@@ -27,14 +27,14 @@ html
                 .happy Happy
                 .year year!
                 span 2014
-          .wishes
+          .wishes.fadein
             span Great ideas to you!
-      center: span.drag_tip 
+      center.fadein: span.drag_tip 
         span «
         span.message drag or scroll
         span »
       #today_line
-      #timeline
+      #timeline.grab
         .days
           #dy2013
             div

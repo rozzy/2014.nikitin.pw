@@ -54,10 +54,10 @@ header
   z-index: 5
 
 .grab
-  cursor: url(https://mail.google.com/mail/images/2/openhand.cur) 8 8, move
+  cursor: url(openhand.cur) 8 8, move
 
 .grabbing
-  cursor: url(https://mail.google.com/mail/images/2/closedhand.cur) 8 8, move
+  cursor: url(closedhand.cur) 8 8, move
 
 .wishes
   position: absolute
@@ -102,12 +102,12 @@ header
   
   span
     display: block
-    padding: 10px 20px
-    font-size: 28px
+    padding: 5px 15px
+    font-size: 33px
     font-weight: 400
     +less-than(650px)
-      font-size: 18px
-      padding: 8px 16px
+      font-size: 22px
+      padding: 4px 12px
 
     +less-than(400px)
       font-size: 16px
@@ -165,6 +165,7 @@ header
   bottom: 40px
   z-index: 5
   width: auto
+  margin-left: -60px
   color: white
   font-weight: 300
   +text-shadow(0 0 20px white, 0 0 15px white, 0 0 5px white)

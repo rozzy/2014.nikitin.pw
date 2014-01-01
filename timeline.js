@@ -1,5 +1,5 @@
 function chainFadein (objects) {
-  start = 2500; 
+  start = 500; 
   $(objects.get().reverse()).each(function (a, b) {
     setTimeout(function () {$(b).fadeTo(0.0, 1.0);}, start)
     start += 20;
@@ -80,6 +80,7 @@ $(function() {
   mobile = $('.mobile').css("display") != "block"
 
   $('#timeline').css('overflow', 'hidden');
+  $('.fadein').css('opacity', 0.0);
 
   Date.prototype.getDOY = function() {
     var onejan = new Date(this.getFullYear(),0,1);
@@ -89,8 +90,6 @@ $(function() {
   days = [];
   monthNames = [ "January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December" ];
-  
-  $.get('contribs.js', addGithubContributions);
 
   $('#timeline #dy2013 div:last').append($("<span/>", {html: '2014', class: 'month_name huge_cap'}));
       
@@ -111,10 +110,20 @@ $(function() {
   });
 
   sly.one('load', function () {
-    $('#timeline').fadeTo(1500, 1.0);
+    $.get('contribs.js', addGithubContributions);
+    $('#timeline, .fadein').fadeTo(1500, 1.0);
     if (!mobile) $(window).resize(sly.reload);
     createPeriod("2013/02/10");
-    sly.slideTo($('.days div[title="Today"]').offset().left - $(window).width());
+    sly.slideTo($('.days div[title="Today"]').offset().left - $(window).width()/2);
+    
+    $('#timeline').bind('mousedown', function () {
+      $(this).removeClass('grab').addClass('grabbing');
+    });
+
+    $('#timeline').bind('mouseup', function () {
+      $(this).removeClass('grabbing').addClass('grab');
+    });
+    
     sly.one('moveStart', function () {
      $('.drag_tip').addClass('removed');
      setTimeout(function () {$('.drag_tip').parent().remove();}, 4000);
