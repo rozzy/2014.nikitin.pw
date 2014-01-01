@@ -328,10 +328,10 @@ header {
     color: white;
     font-weight: 300;
     text-shadow: 0 0 20px white, 0 0 15px white, 0 0 5px white;
-    -webkit-transition: all 4s ease-in-out;
-    -moz-transition: all 4s ease-in-out;
-    -o-transition: all 4s ease-in-out;
-    transition: all 4s ease-in-out;
+    -webkit-transition: text-shadow 4s ease-in-out;
+    -moz-transition: text-shadow 4s ease-in-out;
+    -o-transition: text-shadow 4s ease-in-out;
+    transition: text-shadow 4s ease-in-out;
 }
 
 @media only screen and (max-width: 650px) {

@@ -7,7 +7,8 @@ function chainFadein (objects) {
 }
 
 function switchYear () {
-  year = $('#timeline .days #dy2014').offset().left <= 732 ? '2014' : '2013';
+  year = $('#today_line').offset().left > $('#timeline .days #dy2014').offset().left - 10 ? '2014' : '2013';
+  // year = $('#timeline .days #dy2014').offset().left <= 732 ? '2014' : '2013';
     // getting active date
     // a = $('.days #dy' + year, document.body).children().filter(function () {
     //   todayOffset = (-1 * $('#timeline .days #dy' + year).offset().left) + $(window).width()/2;
@@ -16,7 +17,6 @@ function switchYear () {
     // });
     // console.log(a);
     if ($('.yearstamp.active').attr('id') != '#y' + year) {
-      console.log('switch year: ' + year);
       $('.yearstamp.active').addClass('hidden').removeClass('active');
       $('.yearstamp#y' + year).addClass('active').removeClass('hidden');
     }
@@ -131,6 +131,7 @@ $(function() {
     if (!mobile) $(window).resize(function () {
       switchYear();
       sly.reload();
+      console.log($('#timeline .days #dy2014').offset().left);
     });
     createPeriod("2013/02/10");
     sly.slideTo($('.days div[title="Today"]').offset().left - $(window).width()/2);
@@ -143,7 +144,7 @@ $(function() {
       $(this).removeClass('grabbing').addClass('grab');
     });
     
-    sly.one('moveStart', function () {
+    sly.on('moveStart', function () {
      $('.drag_tip').addClass('removed');
      setTimeout(function () {$('.drag_tip').parent().remove();}, 4000);
     });
