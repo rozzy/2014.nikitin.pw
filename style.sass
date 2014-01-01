@@ -180,7 +180,11 @@ header
   color: white
   font-weight: 300
   +text-shadow(0 0 20px white, 0 0 15px white, 0 0 5px white)
-  +transition(all 4s ease-in-out)
+  +transition(text-shadow 4s ease-in-out)
+  +less-than(650px)
+    bottom: 20px
+  +less-than(400px)
+    bottom: 10px
 
   &.active
     +text-shadow(0 0 5px #ABCCF0)
